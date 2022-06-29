@@ -18,6 +18,8 @@ namespace CL.Manager.AutoMapper
                 
 
             CreateMap<NovoEndereco, Movimentacao>();
+
+            CreateMap<NovoMove, Movimentacao>();
             
             
 

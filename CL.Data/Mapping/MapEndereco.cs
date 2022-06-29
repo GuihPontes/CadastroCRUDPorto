@@ -13,8 +13,8 @@ namespace CL.Data.Mapping
     {
         public void Configure(EntityTypeBuilder<Movimentacao> builder)
         {
-
-            builder.HasKey(x => x.ClienteId); 
+            builder.HasKey(p => new { p.Id, p.ClienteId }); 
+             
             //builder.hasone(x => x.cliente)
             //     .withone(p => p.endereco)
             //     .hasforeignkey<endereco>(x => x.clienteid);

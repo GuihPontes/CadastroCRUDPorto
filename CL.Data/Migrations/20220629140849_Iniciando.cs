@@ -28,28 +28,27 @@ namespace CL.Data.Migrations
                 name: "Enderecos",
                 columns: table => new
                 {
-                    ClienteId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    ClienteId = table.Column<int>(type: "int", nullable: false),
                     Tipo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Inicio = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Fim = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ClienteId1 = table.Column<int>(type: "int", nullable: false)
+                    Fim = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Enderecos", x => x.ClienteId);
+                    table.PrimaryKey("PK_Enderecos", x => new { x.Id, x.ClienteId });
                     table.ForeignKey(
-                        name: "FK_Enderecos_Clientes_ClienteId1",
-                        column: x => x.ClienteId1,
+                        name: "FK_Enderecos_Clientes_ClienteId",
+                        column: x => x.ClienteId,
                         principalTable: "Clientes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Enderecos_ClienteId1",
+                name: "IX_Enderecos_ClienteId",
                 table: "Enderecos",
-                column: "ClienteId1");
+                column: "ClienteId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

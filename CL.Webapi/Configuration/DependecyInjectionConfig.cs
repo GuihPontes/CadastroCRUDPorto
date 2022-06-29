@@ -1,6 +1,7 @@
 ﻿using CL.Data.Repository;
 using CL.Manager.Implemetation;
 using CL.Manager.Interfaces;
+using CL.Manager.InterfacesRepositorio;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,10 @@ namespace CL.Webapi.Configuration
         {
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IClienteManager, ClienteManager>();
-         
+            services.AddScoped<IMoveRepository, MoveRepository>();
+            services.AddScoped<IMoveManager, MoveManager>();
+
+
 
         }
     }

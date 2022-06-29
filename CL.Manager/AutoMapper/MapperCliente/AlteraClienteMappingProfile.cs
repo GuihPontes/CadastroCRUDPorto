@@ -14,6 +14,7 @@ namespace CL.Manager.AutoMapper.MapperCliente
         public AlteraClienteMappingProfile()
         {
             CreateMap<AlteraCliente, Cliente>();
+            CreateMap<AlteraMove, Movimentacao>();
         }
     }
 }

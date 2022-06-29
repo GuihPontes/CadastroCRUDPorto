@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CL.Data.Migrations
 {
     [DbContext(typeof(CLContext))]
-    [Migration("20220629064918_Iniciando")]
+    [Migration("20220629140849_Iniciando")]
     partial class Iniciando
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,12 +52,10 @@ namespace CL.Data.Migrations
 
             modelBuilder.Entity("CL.Core.Domain.Movimentacao", b =>
                 {
-                    b.Property<int>("ClienteId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
 
-                    b.Property<int>("ClienteId1")
+                    b.Property<int>("ClienteId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Fim")
@@ -69,9 +67,9 @@ namespace CL.Data.Migrations
                     b.Property<string>("Tipo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ClienteId");
+                    b.HasKey("Id", "ClienteId");
 
-                    b.HasIndex("ClienteId1");
+                    b.HasIndex("ClienteId");
 
                     b.ToTable("Enderecos");
                 });
@@ -80,7 +78,7 @@ namespace CL.Data.Migrations
                 {
                     b.HasOne("CL.Core.Domain.Cliente", "Cliente")
                         .WithMany("Endereco")
-                        .HasForeignKey("ClienteId1")
+                        .HasForeignKey("ClienteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
